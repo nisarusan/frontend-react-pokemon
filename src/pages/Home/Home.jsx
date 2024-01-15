@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Pokemoncard from "../../component/Pokemon/Pokemoncard.jsx";
 
@@ -23,6 +23,7 @@ function Home() {
                 setError(true);
             }
         }
+
         fetchPokemon();
     }, [offset]);
 
@@ -34,31 +35,35 @@ function Home() {
     const isNextDisabled = offset + limit >= totalCount;
     return (
         <>
-            {error ? (
-                <h1>Er is een fout opgetreden: ${error}</h1>
-            ) : (
-                <main>
-                    <h1>Gotta catch 'em all!</h1>
-                    <ul>
-                        {pokeMon.length > 0 &&
-                            pokeMon.map((pokemon, index) => (
-                                <li key={index} className="pokemon">
-                                    <Pokemoncard
-                                        name={pokemon.name}
-                                        id={pokemon.url.split("/")[6]}
-                                        key={index}
-                                    />
-                                </li>
-                            ))}
-                    </ul>
-                    <button onClick={handlePreviousClick} disabled={isPreviousDisabled()}>
-                        Previous
-                    </button>
-                    <button onClick={handleNextClick} disabled={isNextDisabled}>
-                        Next
-                    </button>
-                </main>
-            )}
+            <div className="container">
+                {error ? (
+                    <h1>Er is een fout opgetreden: ${error}</h1>
+                ) : (
+                    <main>
+                        <h1>Gotta catch 'em all!</h1>
+                        <div className="buttons">
+                            <button onClick={handlePreviousClick} disabled={isPreviousDisabled()}>
+                                Previous
+                            </button>
+                            <button onClick={handleNextClick} disabled={isNextDisabled}>
+                                Next
+                            </button>
+                        </div>
+                        <ul className="pokemoncards">
+                            {pokeMon.length > 0 &&
+                                pokeMon.map((pokemon, index) => (
+                                    <li key={index} className="pokemon">
+                                        <Pokemoncard
+                                            name={pokemon.name}
+                                            id={pokemon.url.split("/")[6]}
+                                            key={index}
+                                        />
+                                    </li>
+                                ))}
+                        </ul>
+                    </main>
+                )}
+            </div>
         </>
     );
 }

@@ -1,18 +1,27 @@
-.root {
+.container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-ul {
+ul.pokemoncards {
     display: flex;
     list-style: none;
     gap: 1rem;
     flex-wrap: wrap;
+    flex-basis: 4rem;
+    justify-content: space-evenly;
+    padding: 3rem 0;
+}
+
+ul {
+    list-style-type: none;
 }
 
 ul li {
     background-color: #fff;
     border-radius: .3rem;
+    flex-basis: 13rem;
 }
 
 .pokemon {
@@ -21,6 +30,14 @@ ul li {
     justify-content: center;
     align-items: center;
 }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
 
 main {
     width: 50%;
