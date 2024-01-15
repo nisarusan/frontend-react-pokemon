@@ -1,1 +1,27 @@
-/*Schrijf hier jouw eigen CSS!*/
+.root {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+ul li {
+    background-color: #fff;
+    border-radius: .3rem;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 50%;
+}

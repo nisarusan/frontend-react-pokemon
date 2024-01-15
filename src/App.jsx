@@ -5,6 +5,7 @@ import Pokemoncard from "./component/Pokemon/Pokemoncard.jsx";
 import Home from "./pages/Home/Home.jsx";
 import {Routes, Route} from 'react-router-dom';
 import NotFound from "./pages/Notfound/NotFound.jsx";
+import './App.css';
 function App() {
     return (
         <>
