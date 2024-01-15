@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import styles from './Pokemoncard.module.css';
 
-function Pokemoncard({ id }) {
+function Pokemoncard({id}) {
     const [pokemon, togglePokemon] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -22,13 +23,13 @@ function Pokemoncard({ id }) {
         fetchPokemon();
     }, [id]);
     return (
-        <div>
+        <>
             {loading ? (
                 <p>Loading</p>
             ) : (
                 <>
                     <p>{pokemon.name}</p>
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                    <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
                     <p>{pokemon.moves.length}</p>
                     <p>{pokemon.weight}</p>
                     <ul>
@@ -39,7 +40,7 @@ function Pokemoncard({ id }) {
                     </ul>
                 </>
             )}
-        </div>
+        </>
     );
 }
 

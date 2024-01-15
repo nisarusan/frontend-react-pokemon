@@ -1,6 +1,14 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Pokemoncard from "../../component/Pokemon/Pokemoncard.jsx";
+import styles from './Home.module.css'
+// import {
+//     nextPagePrevious as ButtonPage,
+//     offset,
+//     isNextDisabled,
+//     limit,
+//     handleNextClick
+// } from '../../helper/pagerHelper.jsx';
 
 function Home() {
     const [pokeMon, setPokeMonData] = useState([]);
@@ -18,26 +26,25 @@ function Home() {
                 console.error(e);
             }
         }
+
         fetchPokemon();
     }, [offset]);
 
-    const handleNextClick = () => {
-        setOffset((previousOffSet) => previousOffSet + limit);
-        console.log("U heeft geklikt");
-    }
+    const handleNextClick = () => setOffset((previousOffSet) => previousOffSet + limit);
     const isNextDisabled = offset + limit >= totalCount;
+
     return (
         <>
             <h1>Gotta catch 'em all!</h1>
-            {pokeMon.length > 0 &&
-                pokeMon.map((pokemon, index) => {
-                    return <div key={index}>
-                        <Pokemoncard name={pokemon.name} id={pokemon.url.split("/")[6]} />
-
-                    </div>
-                })}
+            <ul>
+                {pokeMon.length > 0 &&
+                    pokeMon.map((pokemon, index) => {
+                        return <li key={index}>
+                            <Pokemoncard name={pokemon.name} id={pokemon.url.split("/")[6]} key={index}/>
+                        </li>
+                    })}
+            </ul>
             <button onClick={handleNextClick} disabled={isNextDisabled}>Next</button>
-
         </>
     )
 }
